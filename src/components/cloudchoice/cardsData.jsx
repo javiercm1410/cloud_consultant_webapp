@@ -2,23 +2,26 @@ const cardsData = [
     {
       id: 1,
       provider: 'AWS',
+      image:'../../public/aws-logo.png',
       title: 'Amazon Web Services',
       description:
-        'Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery, and other functionality.',
+        'Amazon Web Services',
     },
     {
       id: 2,
       provider: 'GCP',
+      image:'../../public/google-cloud-logo.png',
       title: 'Google Cloud Platform',
       description:
-        'Google Cloud Platform (GCP) is a suite of cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products.',
+        'Google Cloud Platform',
     },
     {
       id: 3,
       provider: 'Azure',
+      image:'../../public/azurelogo.png',
       title: 'Microsoft Azure',
       description:
-        'Microsoft Azure is a growing collection of integrated cloud services that developers and IT professionals use to build, deploy, and manage applications.',
+        'Microsoft Azure',
     },
   ];
   

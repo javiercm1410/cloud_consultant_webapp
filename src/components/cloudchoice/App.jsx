@@ -4,20 +4,27 @@ import Card from './Card';
 import cardsData from './cardsData';
 
 const CloudChoice = () => {
-
   return (
-    <div> 
+    <>
     <Navar />
-    <h1>Choose Cloud Provider</h1>
-    {cardsData.map((card) => (
-        <Card
-            key={card.id}
-            provider={card.provider}
-            title={card.title}
-            description={card.description}
-        />
-    ))} 
+    <div className='bg-main vh-100'>
+      <h1>Choose Cloud Provider</h1>
+      <div className="container">
+        <div className="row">
+          {cardsData.map((card) => (
+            <div className="col-md-4" key={card.id}>
+              <Card
+                provider={card.provider}
+                image={card.image}
+                title={card.title}
+                description={card.description}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
+    </>
   );
 };
 
