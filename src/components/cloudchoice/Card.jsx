@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import styles from './Card.module.css';
 
 const Card = ({ title, description, provider, image }) => {
   const location = useLocation();
@@ -26,10 +27,12 @@ const Card = ({ title, description, provider, image }) => {
       >
         <img className="card-img-top" src={image} alt="Card image cap" />
       </div>
-      <div className="card-body">
+      <div className="card-body text-center">
         <p className="card-text">{title}</p>
-        <p className="card-text">{description}</p>
-        <button onClick={() => handleProviderSelection(provider)}>{provider}</button>
+        <p className={`${styles.cloudText} card-text`}>{description}</p>
+        <button className={`btn ${styles.customButton}`} onClick={() => handleProviderSelection(provider)}>
+        {provider}
+        </button>
       </div>
     </div>
   );
