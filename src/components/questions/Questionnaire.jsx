@@ -1,24 +1,26 @@
 // QuestionnaireForm.jsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import QuestionSelect from './QuestionSelect';
 import QuestionInput from './QuestionInput';
 import QuestionTextarea from './QuestionTextarea';
 import QuestionCheckbox from './QuestionCheckbox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { FormDataContext } from '../../context/formDataContext';
 
 const QuestionnaireForm = () => {
 
+  const {formData, setFormData} = useContext(FormDataContext);
+
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    scale: false,
-    public_access: false,
-    vpn_access: false,
-    container_based: false,
-    environment_config: false,
-  });
+  // const [formData, setFormData] = useState({
+  //   scale: false,
+  //   public_access: false,
+  //   vpn_access: false,
+  //   container_based: false,
+  //   environment_config: false,
+  // });
 
   const handleInputChange = (name, value) => {
     setFormData({ ...formData, [name]: value });
@@ -29,17 +31,10 @@ const QuestionnaireForm = () => {
   
     try {
       const response = await axios.post('http://localhost:3000/api/data', formData);
-      // const response = await fetch('http://localhost:3000/api/data', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formData),
-      // });
 
       if (response.status == 200){
         const Jresp = response.data;
-        console.log('Form submitted successfully', Jresp);
+        console.log('Form submitted successfully', formData, Jresp);
         if (formData.cloud_provider === "No") {
           // Redirect to the cloudchoice page and pass the response data
           navigate('/cloudchoice', { state: { formData } });
@@ -65,72 +60,68 @@ const QuestionnaireForm = () => {
             <div className="card questionnaire">
               <div className="card-body">
                 <QuestionSelect
-                  question="Q1. What's your favorite cloud provider?"
+                  question="What's your favorite cloud provider?"
                   name="cloud_provider"
                   options={['Azure', 'AWS', 'GCP', 'No']}
                   onChange={handleInputChange}
                 />
-                <QuestionInput
-                  question="Q2. What's your budget?"
+                {/* <tionInput
+                  question="What's your budget?"
                   name="budget"
                   type="number"
                   placeholder="Enter your budget"
                   onChange={handleInputChange}
-                />
+                /> */}
                   <QuestionSelect
-                    question="Q3. What's the expected workload for your application?"
+                    question="What's the expected workload for your application?"
                     name="workload"
                     options={['High', 'Medium', 'Low']}
                     onChange={handleInputChange}
                   />
                   <QuestionSelect
-                    question="Q4. What type of architecture are you looking for?"
+                    question="What type of architecture are you looking for?"
                     name="architecture"
-                    options={['Three-tier', 'Microservices', 'Serverless', 'Bucket']}
+                    // options={['classic-three-tier', 'Container-based', 'Serverless', 'Bucket']}
+                    options={['classic-three-tier', 'Container-based']}
                     onChange={handleInputChange}
                   />
                   <QuestionCheckbox
-                    question="Q5. Do you require auto-scaling for your application?"
+                    question="Do you require auto-scaling for your application?"
                     name="scale"
                     onChange={handleInputChange}
                   />
-                  <QuestionCheckbox
-                    question="Q6. Will your application have public access?"
+                  {/* <QuestionCheckbox
+                    question="Will your application have public access?"
                     name="public_access"
                     onChange={handleInputChange}
                   />
                   <QuestionCheckbox
-                    question="Q7. If your application doesn't have public access, do you require a VPN for secure access?"
+                    question="If your application doesn't have public access, do you require a VPN for secure access?"
                     name="vpn_access"
                     onChange={handleInputChange}
-                  />
-                  <QuestionCheckbox
-                    question="Q8. Do you prefer a container-based architecture?"
-                    name="container_based"
-                    onChange={handleInputChange}
-                  />
+                  /> */}
                   <QuestionSelect
-                    question="Q9. Do you need a managed database service? If yes, what type of database?"
+                    question="Do you need a managed database service? If yes, what type of database?"
                     name="managed_database"
                     options={['NoSQL', 'SQL', 'No']}
                     onChange={handleInputChange}
                   />
                   <QuestionInput
-                    question="Q10. What programming language and framework is your application built with?"
+                    question="What programming language and framework is your application built with?"
                     name="language_framework"
                     type="text"
                     placeholder="Enter language and framework"
                     onChange={handleInputChange}
                   />
                   <QuestionInput
-                    question="Q11. Are you using any specific build tools or package managers for your application? If yes, which ones?"
+                    question="Are you using any specific build tools or package managers for your application? If yes, which ones?"
                     name="build_tools"
                     type="text"
                     placeholder="Enter build tools or package managers"
                     onChange={handleInputChange}
                   />
                   <QuestionCheckbox
-                    question="Q12. Does your application require any environment-specific configurations or secrets during deployment?"
+                    question="Does your application require any environment-specific configurations or secrets during deployment?"
                     name="environment_config"
                     onChange={handleInputChange}
                   />
