@@ -1,76 +1,74 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navar from '../utils/Navar';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FormDataContext } from '../../context/formDataContext';
+import Base64Image from './Base64Image';
+import PriceCard from './PriceCard';
+import DescriptionCard from './DescriptionCard';
+import ServicesCard from './ServicesCard';
+
 
 const Response = () => {
+
+  const {formData} = useContext(FormDataContext);
+
   const location = useLocation();
   const navigate = useNavigate();
-  const data = location.state?.data || location.state?.formData;
+  //const data = location.state?.data || location.state?.formData;
   const apiResponse = location.state?.apiResponse || location.state?.Jresp;
+  const base64Image = apiResponse?.imageBase64;
+  const data = apiResponse?.data || {};
+  
+  console.log(apiResponse);
+  // console.log(imagePath);
+
 
   const handleGoBack = () => {
-    navigate('/cloudchoice', { state: { data } });
+    navigate('/cloudchoice', { state: { formData } });
   };
 
   const handleDeploy = () => {
     // Implement your deploy logic here
   };
 
+
+
   return (
-    <div>
+    <div className='bg-main'>
       <Navar />
       <div className="container">
-        <h1>API Response</h1>
+        <p>Architecture Diagram</p>
         <div className='row'>
           <div className="card">
-            <img
-              src="path/to/your/diagram/image.jpg"
-              alt="Diagram"
-              className="card-img-top"
-            />
-            <div className="card-body">
-              <button className="btn btn-primary mr-2" onClick={handleDeploy}>
-                Deploy
-              </button>
-              <button className="btn btn-secondary" onClick={handleGoBack}>
-                Go Back
-              </button>
-            </div>
+            <Base64Image base64Image={base64Image} alt="Example Image" />
           </div>
         </div>
 
-        <div className="row">
-
+        <div className="row mt-4">
           <div className="col-md-4">
-            <div className="card mb-3">
-              <div className="card-header">Price</div>
-              <div className="card-body">
-                {/* Display your price information here */}
-              </div>
-            </div>
-            </div>
+            <PriceCard data={data} />
+          </div>
           <div className="col-md-4">
-          
-            <div className="card mb-3">
-              <div className="card-header">Description</div>
-              <div className="card-body">
-                {/* Display your description information here */}
-              </div>
-            </div>
-            </div>
+            <DescriptionCard />
+          </div>
           <div className="col-md-4">
-          
-            <div className="card mb-3">
-              <div className="card-header">Services</div>
-              <div className="card-body">
-                {/* Display your services information here */}
-              </div>
-            </div>
+            <ServicesCard data={data} />
           </div>
         </div>
+
+        <button className="btn btn-primary mr-5" onClick={handleDeploy}>
+          Deploy
+        </button>
+        <button className="btn btn-secondary" onClick={handleGoBack}>
+          Go Back
+        </button>
+        
       </div>
     </div>
   );
 };
 
 export default Response;
+
+
+
