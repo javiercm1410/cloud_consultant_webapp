@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Card.module.css';
+import { FormDataContext } from '../../context/formDataContext';
+
 
 const Card = ({ title, description, provider, image }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const data = location.state?.formData || location.state?.data;
+  const {formData, setFormData} = useContext(FormDataContext);
 
   const handleProviderSelection = async (provider) => {
-    // Update the cloud_provider field in the data
-    const updatedData = { ...data, cloud_provider: provider };
+    // Update the cloud_provider field in the form data
+    const updatedFormData = { ...formData, cloud_provider: provider };
+    setFormData(updatedFormData);
 
-    // Send the updated data back to the API
-    const apiResponse = await (await axios.post('http://localhost:3000/api/data', updatedData)).data;
+    // Send the updated form data to the API
+    const apiResponse = (await axios.post('http://localhost:3000/api/data', updatedFormData)).data;
 
-    // Navigate to the response page with the updated data and API response
-    navigate('/response', { state: { data: updatedData, apiResponse } });
+    // Navigate to the response page with the updated form data and API response
+    navigate('/response', { state: { formData: updatedFormData, apiResponse } });
   };
 
   return (
