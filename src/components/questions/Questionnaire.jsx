@@ -82,7 +82,7 @@ const QuestionnaireForm = () => {
                     question="What type of architecture are you looking for?"
                     name="architecture"
                     // options={['classic-three-tier', 'Container-based', 'Serverless', 'Bucket']}
-                    options={['classic-three-tier', 'Container-based']}
+                    options={['Classic-three-tier', 'Container-based']}
                     onChange={handleInputChange}
                   />
                   <QuestionCheckbox
