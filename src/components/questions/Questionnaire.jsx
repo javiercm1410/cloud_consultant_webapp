@@ -103,7 +103,7 @@ const QuestionnaireForm = () => {
                   <QuestionSelect
                     question="Do you need a managed database service? If yes, what type of database?"
                     name="managed_database"
-                    options={['NoSQL', 'SQL', 'No']}
+                    options={['MySQL', 'MongoDB', 'No']}
                     onChange={handleInputChange}
                   />
                   <QuestionInput
