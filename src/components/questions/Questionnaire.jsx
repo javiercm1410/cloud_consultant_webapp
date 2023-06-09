@@ -12,6 +12,8 @@ const QuestionnaireForm = () => {
 
   const {formData, setFormData} = useContext(FormDataContext);
 
+  const [isContainerBased, setIsContainerBased] = useState(false);
+
   const navigate = useNavigate();
 
   // const [formData, setFormData] = useState({
@@ -23,6 +25,12 @@ const QuestionnaireForm = () => {
   // });
 
   const handleInputChange = (name, value) => {
+    // Check if the changed field is 'architecture' and set the new state variable
+    if (name === 'architecture' && value === 'Container-based') {
+      setIsContainerBased(true);
+    } else if (name === 'architecture') {
+      setIsContainerBased(false);
+    }
     setFormData({ ...formData, [name]: value });
   };  
   
@@ -85,6 +93,23 @@ const QuestionnaireForm = () => {
                     options={['Classic-three-tier', 'Container-based']}
                     onChange={handleInputChange}
                   />
+                  {isContainerBased ? (
+                    <QuestionInput
+                      question="What is your image?"
+                      name="container_repository"
+                      type="text"
+                      placeholder="Enter your container repository"
+                      onChange={handleInputChange}
+                    />
+                  ) : (
+                    <QuestionInput
+                      question="How do you run you app (including the git repo)?"
+                      name="deploy_command"
+                      type="text"
+                      placeholder="Enter the commands"
+                      onChange={handleInputChange}
+                    />
+                  )}
                   <QuestionCheckbox
                     question="Do you require auto-scaling for your application?"
                     name="scale"
@@ -106,7 +131,7 @@ const QuestionnaireForm = () => {
                     options={['MySQL', 'MongoDB', 'No']}
                     onChange={handleInputChange}
                   />
-                  <QuestionInput
+                  {/* <QuestionInput
                     question="What programming language and framework is your application built with?"
                     name="language_framework"
                     type="text"
@@ -119,8 +144,8 @@ const QuestionnaireForm = () => {
                     type="text"
                     placeholder="Enter build tools or package managers"
                     onChange={handleInputChange}
-                  />
-                  <QuestionCheckbox
+                  /> */}
+                  {/* <QuestionCheckbox
                     question="Does your application require any environment-specific configurations or secrets during deployment?"
                     name="environment_config"
                     onChange={handleInputChange}
@@ -130,7 +155,7 @@ const QuestionnaireForm = () => {
                     name="environment_config_details"
                     placeholder="Provide environment-specific configurations or secrets details"
                     onChange={handleInputChange}
-                  />
+                  /> */}
                   <div className="mb-3 d-flex justify-content-center p-bt">
                     <button type="submit" className="btn btn-primary btn-outline-light bttn-submit">
                       Done

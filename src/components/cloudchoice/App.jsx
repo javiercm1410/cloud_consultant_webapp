@@ -8,7 +8,7 @@ const CloudChoice = () => {
   return (
     <>
     <Navar />
-    <div className='bg-main'>
+    <div className='bg-main vh-100'>
       <h2 className={`${styles.cloudHeader} d-flex justify-content-center align-items-center`}>Choose a cloud provider</h2>
       <div className="container">
         <div className="row">

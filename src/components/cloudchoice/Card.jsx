@@ -4,11 +4,24 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './Card.module.css';
 import { FormDataContext } from '../../context/formDataContext';
 
-
 const Card = ({ title, description, provider, image }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const {formData, setFormData} = useContext(FormDataContext);
+
+  const getTitleColor = (title) => {
+    // Change the color based on the title or id
+    switch(title) {
+      case 'Amazon Web Services':
+        return '#F0AF19';
+      case 'Google Cloud Platform':
+        return 'green';
+      case 'Microsoft Azure':
+        return '#193EF6';
+      default:
+        return 'black'; // default color if no match
+    }
+  };
 
   const handleProviderSelection = async (provider) => {
     // Update the cloud_provider field in the form data
@@ -23,18 +36,14 @@ const Card = ({ title, description, provider, image }) => {
   };
 
   return (
-    <div className="card bg-dark">
-      <div
-        className="card-img-container d-flex justify-content-center align-items-center"
-        style={{ minHeight: '250px', maxHeight: '250px' }}
-      >
-        <img className="card-img-top" src={image} alt="Card image cap" />
+    <div className={`card bg-dark ${styles.card}`}>
+      <div className={`${styles.cloudTitle}`}>
+        <h2 className={`${styles.cloudTitle}`} style={{ color: getTitleColor(title) }}>{title}</h2>
       </div>
-      <div className="card-body text-center">
-        <p className="card-text">{title}</p>
+      <div className={`card-body ${styles.cardBody}`}>
         <p className={`${styles.cloudText} card-text`}>{description}</p>
         <button className={`btn ${styles.customButton}`} onClick={() => handleProviderSelection(provider)}>
-        {provider}
+        SELECT
         </button>
       </div>
     </div>

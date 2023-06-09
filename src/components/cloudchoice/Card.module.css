@@ -25,6 +25,18 @@
     color: #FFFFFF;
 }
 
+.cloudTitle {  
+
+  /* height: 10rem;
+  top: 20rem; */
+  text-align: center;
+  font-family: 'Open Sans';
+  font-style: bold;
+  font-weight: 20rem;
+  font-size: 2.5rem;
+  margin-top: 1.5rem;
+}
+
 .customButton {
     width: 120px;
     background-color: white;
@@ -38,3 +50,15 @@
     background-color: #7e7c7c;
   }
   
+  .card {
+    height: 100%;  /* Set a fixed card height */
+    margin-bottom: 2rem; /* Add some margin to not let it touch the bottom */
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;  /* Set card body height */
+}

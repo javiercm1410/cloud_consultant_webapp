@@ -44,16 +44,17 @@ const Response = () => {
           </div>
         </div>
 
-        <div className="row mt-4">
-          <div className="col-md-4">
+        {/* <div className="row mt-4"> */}
+        <div className="row mt-6">
+          <div className="col-md-6">
             <PriceCard data={data} />
           </div>
-          <div className="col-md-4">
+           <div className="col-md-6">
             <DescriptionCard />
-          </div>
+          </div>{/*
           <div className="col-md-4">
             <ServicesCard data={data} />
-          </div>
+          </div> */}
         </div>
 
         <button className="btn btn-primary mr-5" onClick={handleDeploy}>

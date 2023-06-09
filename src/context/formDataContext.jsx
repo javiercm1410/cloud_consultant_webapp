@@ -10,15 +10,17 @@ export const FormDataProvider = ({ children }) => {
     scale: false,
    // public_access: false,
    // vpn_access: false,
-    environment_config: false,
+    // environment_config: false,
     cloud_provider: 'No',
    // budget: '',
     workload: '',
+    deploy_command: '',
     architecture: '',
+    container_repository: '',
     managed_database: '',
-    language_framework: '',
-    build_tools: '',
-    environment_config_details: ''
+    // language_framework: '',
+    // build_tools: '',
+    // environment_config_details: ''
   });
 
   // Pass the dog's info object to the provider value prop
