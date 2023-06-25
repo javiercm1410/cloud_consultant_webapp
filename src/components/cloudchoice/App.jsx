@@ -1,10 +1,40 @@
-import React from 'react';
+// CloudChoice.jsx
+import React, { useContext } from 'react';
 import Navar from '../utils/Navar';
 import Card from './Card';
-import cardsData from './cardsData';
 import styles from './Card.module.css';
+import { useLocation } from 'react-router-dom';
 
 const CloudChoice = () => {
+
+  const location = useLocation();
+  //const data = location.state?.data || location.state?.formData;
+  const apiResponse = location.state?.apiResponse || location.state?.Jresp;
+  console.log(apiResponse);
+  const prices = apiResponse?.Price || {};
+  console.log(prices);
+
+  const cardsData = [
+    {
+      id: 1,
+      provider: 'AWS',
+      title: 'Amazon Web Services',
+      description: 'Price: ' + (prices?.AWS || 'N/A'),
+    },
+    {
+      id: 2,
+      provider: 'GCP',
+      title: 'Google Cloud Platform',
+      description: 'Price: ' + (prices?.GCP || 'N/A'),
+    },
+    {
+      id: 3,
+      provider: 'Azure',
+      title: 'Microsoft Azure',
+      description: 'Price: ' + (prices?.Azure || 'N/A'),
+    },
+  ];
+
   return (
     <>
     <Navar />

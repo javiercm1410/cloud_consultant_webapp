@@ -24,7 +24,7 @@ const Response = () => {
 
 
   const handleGoBack = () => {
-    navigate('/cloudchoice', { state: { formData } });
+    navigate('/cloudchoice', { state: { apiResponse, formData } });
   };
 
   const handleDeploy = () => {

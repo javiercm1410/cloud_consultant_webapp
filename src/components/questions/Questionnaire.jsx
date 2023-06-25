@@ -2,7 +2,8 @@
 import React, { useState, useContext } from 'react';
 import QuestionSelect from './QuestionSelect';
 import QuestionInput from './QuestionInput';
-import QuestionTextarea from './QuestionTextarea';
+// import QuestionTextarea from './QuestionTextarea';
+import LoadingWheel from '../loading/LoadingWheel';
 import QuestionCheckbox from './QuestionCheckbox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +12,7 @@ import { FormDataContext } from '../../context/formDataContext';
 const QuestionnaireForm = () => {
 
   const {formData, setFormData} = useContext(FormDataContext);
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isContainerBased, setIsContainerBased] = useState(false);
 
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const QuestionnaireForm = () => {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true); // Set submitting state to true when form is submitted
   
     try {
       const response = await axios.post('http://localhost:3000/api/data', formData);
@@ -45,7 +47,7 @@ const QuestionnaireForm = () => {
         console.log('Form submitted successfully', formData, Jresp);
         if (formData.cloud_provider === "No") {
           // Redirect to the cloudchoice page and pass the response data
-          navigate('/cloudchoice', { state: { formData } });
+          navigate('/cloudchoice', { state: { Jresp, formData } });
         } else {
           // Redirect to the response page and pass the response data
           navigate('/response', { state: { Jresp, formData } });
@@ -56,6 +58,8 @@ const QuestionnaireForm = () => {
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+    } finally {
+      setIsSubmitting(false); // Set submitting state to false after form is processed
     }
   };
   
@@ -83,7 +87,7 @@ const QuestionnaireForm = () => {
                   <QuestionSelect
                     question="What's the expected workload for your application?"
                     name="workload"
-                    options={['High', 'Medium', 'Low']}
+                    options={['High (Aprox. 20000 request per hour)', 'Medium (Aprox. 2000 request per hour)', 'Low (Aprox. 200 request per hour)']}
                     onChange={handleInputChange}
                   />
                   <QuestionSelect
@@ -102,19 +106,22 @@ const QuestionnaireForm = () => {
                       onChange={handleInputChange}
                     />
                   ) : (
-                    <QuestionInput
-                      question="How do you run you app (including the git repo)?"
-                      name="deploy_command"
-                      type="text"
-                      placeholder="Enter the commands"
-                      onChange={handleInputChange}
-                    />
+                    <>
+                      <QuestionInput
+                        question="How do you run you app (including the git repo)?"
+                        name="deploy_command"
+                        type="text"
+                        placeholder="Enter the commands"
+                        onChange={handleInputChange}
+                      />
+                      <QuestionCheckbox
+                        question="Do you require auto-scaling for your application?"
+                        name="scale"
+                        onChange={handleInputChange}
+                      />
+                    </>
                   )}
-                  <QuestionCheckbox
-                    question="Do you require auto-scaling for your application?"
-                    name="scale"
-                    onChange={handleInputChange}
-                  />
+
                   {/* <QuestionCheckbox
                     question="Will your application have public access?"
                     name="public_access"
@@ -157,9 +164,15 @@ const QuestionnaireForm = () => {
                     onChange={handleInputChange}
                   /> */}
                   <div className="mb-3 d-flex justify-content-center p-bt">
-                    <button type="submit" className="btn btn-primary btn-outline-light bttn-submit">
-                      Done
-                    </button>
+                    {isSubmitting ? (  // Add this block
+                      <LoadingWheel />
+                    ) : (
+                      <div className="mb-3 d-flex justify-content-center p-bt">
+                        <button type="submit" className="btn btn-primary btn-outline-light bttn-submit">
+                          Done
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
