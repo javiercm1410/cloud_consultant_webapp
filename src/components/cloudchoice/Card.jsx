@@ -14,20 +14,6 @@ const Card = ({ title, description, provider, image }) => {
 
   // const {formData} = useContext(FormDataContext);
 
-  const getTitleColor = (title) => {
-    // Change the color based on the title or id
-    switch(title) {
-      case 'Amazon Web Services':
-        return '#F0AF19';
-      case 'Google Cloud Platform':
-        return 'green';
-      case 'Microsoft Azure':
-        return '#193EF6';
-      default:
-        return 'black'; // default color if no match
-    }
-  };
-
   const handleProviderSelection = async (provider) => {
     // Update the cloud_provider field in the form data
     const updatedFormData = { ...formData, cloud_provider: provider };
@@ -50,10 +36,11 @@ const Card = ({ title, description, provider, image }) => {
   return (
     <div className={`card bg-dark ${styles.card}`}>
       <div className={`${styles.cloudTitle}`}>
-        <h2 className={`${styles.cloudTitle}`} style={{ color: getTitleColor(title) }}>{title}</h2>
+        <img src={image} alt="AWS Logo" style={{ height: '150px', marginTop: "2rem", marginBottom: "2rem" }} className={'.mt-5'}/>
+        <p className={`${styles.cloudText}`}>{title}</p>
       </div>
       <div className={`card-body ${styles.cardBody}`}>
-        <p className={`${styles.cloudText} card-text`}>{description}</p>
+        <p className={`${styles.cloudPrice} card-text`}>{description}</p>
         {isSubmitting ? (  // Add this block
         <LoadingWheel />
         ) : (

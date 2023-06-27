@@ -18,20 +18,23 @@ const CloudChoice = () => {
     {
       id: 1,
       provider: 'AWS',
+      image: '../../public/aws-logo.png',
       title: 'Amazon Web Services',
-      description: 'Price: ' + (prices?.AWS || 'N/A'),
+      description: 'Price: $' + (prices?.AWS || 'N/A'),
     },
     {
       id: 2,
       provider: 'GCP',
+      image: '../../public/google-cloud-logo.png',
       title: 'Google Cloud Platform',
-      description: 'Price: ' + (prices?.GCP || 'N/A'),
+      description: 'Price: $' + (prices?.GCP || 'N/A'),
     },
     {
       id: 3,
       provider: 'Azure',
+      image: '../../public/azure-logo.png',
       title: 'Microsoft Azure',
-      description: 'Price: ' + (prices?.Azure || 'N/A'),
+      description: 'Price: $' + (prices?.Azure || 'N/A'),
     },
   ];
 
