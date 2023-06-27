@@ -87,7 +87,7 @@ const QuestionnaireForm = () => {
                   <QuestionSelect
                     question="What's the expected workload for your application?"
                     name="workload"
-                    options={['High (Aprox. 20000 request per hour)', 'Medium (Aprox. 2000 request per hour)', 'Low (Aprox. 200 request per hour)']}
+                    options={['High', 'Medium', 'Low']}
                     onChange={handleInputChange}
                   />
                   <QuestionSelect
