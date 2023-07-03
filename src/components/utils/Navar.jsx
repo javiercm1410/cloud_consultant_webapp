@@ -12,10 +12,10 @@ function Navar(){
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/" className="nav-link navbar-brand">home</Link>
+              <Link to="/" className="nav-link navbar-brand">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-link navbar-brand">contact</Link>
+              <Link to="/" className="nav-link navbar-brand">Contact</Link>
             </li>
           </ul>
         </div>

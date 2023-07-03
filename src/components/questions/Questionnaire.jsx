@@ -8,12 +8,14 @@ import QuestionCheckbox from './QuestionCheckbox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FormDataContext } from '../../context/formDataContext';
+import Tooltip from "../utils/ToolTip";
 
 const QuestionnaireForm = () => {
 
   const {formData, setFormData} = useContext(FormDataContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isContainerBased, setIsContainerBased] = useState(false);
+  const [needDB, setNeedDB] = useState(false);
 
   const navigate = useNavigate();
 
@@ -31,6 +33,9 @@ const QuestionnaireForm = () => {
       setIsContainerBased(true);
     } else if (name === 'architecture') {
       setIsContainerBased(false);
+    }
+    if (name === 'managed_database' && [ value === 'MongoDB' || value === 'MySQL']) {
+      setNeedDB(true);
     }
     setFormData({ ...formData, [name]: value });
   };  
@@ -84,8 +89,11 @@ const QuestionnaireForm = () => {
                   placeholder="Enter your budget"
                   onChange={handleInputChange}
                 /> */}
+                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <Tooltip content="Low=200 user per month<br />Medium=2000 user per month<br />High=20000 user per month" />
+                  </div>
                   <QuestionSelect
-                    question="What's the expected workload for your application?"
+                    question="What's the expected workload for your application? "
                     name="workload"
                     options={['High', 'Medium', 'Low']}
                     onChange={handleInputChange}
@@ -108,17 +116,17 @@ const QuestionnaireForm = () => {
                   ) : (
                     <>
                       <QuestionInput
-                        question="How do you run you app (including the git repo)?"
+                        question="How do you deploy you app (including the git repo)?"
                         name="deploy_command"
                         type="text"
                         placeholder="Enter the commands"
                         onChange={handleInputChange}
                       />
-                      <QuestionCheckbox
+                      {/* <QuestionCheckbox
                         question="Do you require auto-scaling for your application?"
                         name="scale"
                         onChange={handleInputChange}
-                      />
+                      /> */}
                     </>
                   )}
 
@@ -133,11 +141,29 @@ const QuestionnaireForm = () => {
                     onChange={handleInputChange}
                   /> */}
                   <QuestionSelect
-                    question="Do you need a managed database service? If yes, what type of database?"
+                    question="Is a managed database service necessary? If so, which type?"
                     name="managed_database"
                     options={['MySQL', 'MongoDB', 'No']}
                     onChange={handleInputChange}
                   />
+                  {needDB ? (
+                    <>
+                      <QuestionInput
+                        question="Database name:"
+                        name="database_name"
+                        type="text"
+                        placeholder=""
+                        onChange={handleInputChange}
+                        />
+                      <QuestionInput
+                        question="Database password:"
+                        name="database_password"
+                        type="password"
+                        placeholder=""
+                        onChange={handleInputChange}
+                        />
+                      </>
+                  ) : null }
                   {/* <QuestionInput
                     question="What programming language and framework is your application built with?"
                     name="language_framework"

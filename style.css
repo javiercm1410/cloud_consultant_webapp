@@ -18,11 +18,11 @@ h1 {
     color: #FFFFFF;
 }
 
-
 a{
     color: #FFFFFF;
     font-family: 'Open Sans';
 }
+
 p {
     font-family: 'Open Sans';
     font-style: normal;
@@ -46,12 +46,32 @@ p {
     background: #2F2F2F;
   }
 
+.tooltip-content {
+  background-color: white;
+  border: 1px solid black;
+  padding: 5px;
+  position: absolute;
+  left: 30px;
+  right: 0;
+  /* width: 200px; */
+  width: max-content;
+  max-width: 600px;
+  z-index: 1;
+  border-radius: 10px;
+  color: black;
+}
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+
 .question{
     font-family: 'Open Sans';
     font-style: normal;
     font-size: 1.2rem;
     line-height: 2rem;
-    margin-top: 3rem;
+    margin-top: 0.3rem;
     margin-bottom: 0.5rem;
     color: #FFFFFF;
 }
@@ -62,6 +82,7 @@ p {
     font-size: 1rem;
     line-height: 2rem;
     color: #FFFFFF;
+    margin-bottom: 3rem;
 }
 
 .bg-main{

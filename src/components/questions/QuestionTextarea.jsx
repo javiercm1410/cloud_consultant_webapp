@@ -12,7 +12,7 @@ const QuestionTextarea = ({ question, name, placeholder, onChange }) => {
   return (
     <div>
       <h5 className="card-title question">{question}</h5>
-      <textarea
+      <textarea style={{ marginBottom: '3rem' }}
         className="form-control mb-3"
         name={name}
         id={name}

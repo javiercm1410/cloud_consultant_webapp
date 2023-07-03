@@ -18,6 +18,8 @@ export const FormDataProvider = ({ children }) => {
     architecture: '',
     container_repository: '',
     managed_database: '',
+    database_name: '',
+    database_password: '',
     // language_framework: '',
     // build_tools: '',
     // environment_config_details: ''

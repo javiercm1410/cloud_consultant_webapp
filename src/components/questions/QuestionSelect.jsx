@@ -14,8 +14,9 @@ const QuestionSelect = ({ question, name, options, onChange}) => {
     <div>
       <h5 className="card-title question">{question}</h5>
       <div className="mb-3">
-        <select
+        <select 
           className="form-select"
+          style={{ marginBottom: '3rem' }}
           name={name}
           id={name}
           value={value}

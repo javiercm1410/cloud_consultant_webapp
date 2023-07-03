@@ -12,8 +12,8 @@ const QuestionInput = ({ question, name, type, placeholder, onChange }) => {
   return (
     <div>
       <h5 className="card-title question">{question}</h5>
-      <input
-        className="form-control mb-3"
+      <input style={{ marginBottom: '3rem' }}
+        className="form-control"
         type={type}
         name={name}
         id={name}

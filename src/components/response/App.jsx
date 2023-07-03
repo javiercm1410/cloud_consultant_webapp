@@ -6,7 +6,8 @@ import Base64Image from './Base64Image';
 import PriceCard from './PriceCard';
 import DescriptionCard from './CredentialsCard';
 import styles from './Response.module.css';
-import ServicesCard from './ServicesCard';
+import Tooltip from "../utils/ToolTip";
+// import ServicesCard from './ServicesCard';
 
 
 const Response = () => {
@@ -51,12 +52,16 @@ const Response = () => {
         </div>
 
         {/* <div className="row mt-4"> */}
+        
         <div className="row mt-12" style={{  marginTop: "2rem", marginBottom: "2rem" }}>
+          <div>
+            <Tooltip content="AWS:<br />USER=XXXXX,PASS=XXXXXX<br />Azure:<br /> USER=XXXXX,PASS=XXXXXX,ACCOUNT=XXXXXX,TENANT=XXXXXX<br /> GCP:<br /> XXXXX" />
+          </div>
            <div className="col-md-12">
             <DescriptionCard />
           </div>
         </div>
-        
+
         <button className={`${styles.customButton} btn mr-5`} onClick={handleDeploy}>
           Deploy
         </button>
@@ -70,6 +75,3 @@ const Response = () => {
 };
 
 export default Response;
-
-
-

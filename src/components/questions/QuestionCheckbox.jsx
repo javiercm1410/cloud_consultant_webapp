@@ -14,7 +14,7 @@ const QuestionCheckbox = ({ question, name, onChange }) => {
     <div>
       <h5 className="card-title question">{question}</h5>
       <div className="mb-3 d-flex justify-content-center">
-        <input
+        <input style={{ marginBottom: '3rem' }}
           type="checkbox"
           className="btn-check"
           name={name}
