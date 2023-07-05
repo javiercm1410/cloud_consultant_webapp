@@ -1,0 +1,51 @@
+.cloudHeader {  
+
+    /* height: 10rem;
+    top: 20rem; */
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 30rem;
+    font-size: 3.5rem;
+    line-height: 7rem;
+    margin-bottom: 3rem;
+    color: #FFFFFF;
+}
+
+.cloudText {  
+
+    /* height: 10rem;
+    top: 20rem; */
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 10rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #FFFFFF;
+}
+
+.cloudTitle {  
+
+  /* height: 10rem;
+  top: 20rem; */
+  text-align: center;
+  font-family: 'Open Sans';
+  font-style: bold;
+  font-weight: 20rem;
+  font-size: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+    height: 100%;  /* Set a fixed card height */
+    margin-bottom: 2rem; /* Add some margin to not let it touch the bottom */
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;  /* Set card body height */
+}

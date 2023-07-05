@@ -115,6 +115,9 @@ const QuestionnaireForm = () => {
                     />
                   ) : (
                     <>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <Tooltip content="command1; command2; command3" />
+                      </div>
                       <QuestionInput
                         question="How do you deploy you app (including the git repo)?"
                         name="deploy_command"

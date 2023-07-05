@@ -1,11 +1,13 @@
 import React from "react";
 import Navar from "../utils/Navar";
+import DeployInfo from "./DeployInfo";
 
 const App = () => {
     return(
-        <div>
-            <Navar />
-        </div>
+        <>
+        <Navar />
+        <DeployInfo />
+        </>
     );
 }
 

@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { FormDataContext } from '../../context/formDataContext';
 import Base64Image from './Base64Image';
 import PriceCard from './PriceCard';
-import DescriptionCard from './CredentialsCard';
+import CredentialsCard from './CredentialsCard';
 import styles from './Response.module.css';
 import Tooltip from "../utils/ToolTip";
 // import ServicesCard from './ServicesCard';
@@ -29,8 +29,36 @@ const Response = () => {
     navigate('/cloudchoice', { state: { apiResponse, formData } });
   };
 
-  const handleDeploy = () => {
+  const handleDeploy = async (event) => {
     // Implement your deploy logic here
+    navigate('/deploy', { state: { apiResponse, formData } });
+
+    // event.preventDefault();
+    // setIsSubmitting(true); // Set submitting state to true when form is submitted
+  
+    // try {
+    //   const response = await axios.post('http://localhost:3000/api/data', formData);
+
+    //   if (response.status == 200){
+    //     const Jresp = response.data;
+    //     console.log('Form submitted successfully', formData, Jresp);
+    //     if (formData.cloud_provider === "No") {
+    //       // Redirect to the cloudchoice page and pass the response data
+    //       navigate('/cloudchoice', { state: { Jresp, formData } });
+    //     } else {
+    //       // Redirect to the response page and pass the response data
+    //       navigate('/response', { state: { Jresp, formData } });
+    //     }
+
+    //   } else {
+    //     throw new Error('Failed to submit form');
+    //   }
+    // } catch (error) {
+    //   console.error('Error submitting form:', error);
+    // } finally {
+    //   setIsSubmitting(false); // Set submitting state to false after form is processed
+    // }
+  
   };
 
   return (
@@ -58,7 +86,7 @@ const Response = () => {
             <Tooltip content="AWS:<br />USER=XXXXX,PASS=XXXXXX<br />Azure:<br /> USER=XXXXX,PASS=XXXXXX,ACCOUNT=XXXXXX,TENANT=XXXXXX<br /> GCP:<br /> XXXXX" />
           </div>
            <div className="col-md-12">
-            <DescriptionCard />
+            <CredentialsCard />
           </div>
         </div>
 
