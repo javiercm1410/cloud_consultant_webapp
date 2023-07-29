@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react';
 import QuestionSelect from './QuestionSelect';
 import QuestionInput from './QuestionInput';
-// import QuestionTextarea from './QuestionTextarea';
+import QuestionTextarea from './QuestionTextarea';
 import LoadingWheel from '../loading/LoadingWheel';
 import QuestionCheckbox from './QuestionCheckbox';
 import axios from 'axios';
@@ -106,25 +106,46 @@ const QuestionnaireForm = () => {
                     onChange={handleInputChange}
                   />
                   {isContainerBased ? (
-                    <QuestionInput
-                      question="What is your image?"
-                      name="container_repository"
-                      type="text"
-                      placeholder="Enter your container repository"
-                      onChange={handleInputChange}
-                    />
+                    <>
+                      <QuestionInput
+                        question="What is your image?"
+                        name="container_repository"
+                        type="text"
+                        placeholder="Enter container image name"
+                        onChange={handleInputChange}
+                        />
+                      <QuestionInput
+                        question="In which port the container will be running?"
+                        name="container_port"
+                        type="number"
+                        placeholder="Enter container port"
+                        onChange={handleInputChange}
+                        />
+                    </>
                   ) : (
                     <>
                       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <Tooltip content="command1; command2; command3" />
+                        <Tooltip content="command 1<br />command 2<br />command 3" />
                       </div>
-                      <QuestionInput
-                        question="How do you deploy you app (including the git repo)?"
-                        name="deploy_command"
-                        type="text"
-                        placeholder="Enter the commands"
+                      <QuestionTextarea
+                        question="How do you deploy your frontend app (including the git repo)?"
+                        name="deploy_command_front"
+                        placeholder="Frontend deploy commands"
                         onChange={handleInputChange}
                       />
+                      <QuestionTextarea
+                        question="How do you deploy your backend app (including the git repo)?"
+                        name="deploy_command_back"
+                        placeholder="Backend deploy commands"
+                        onChange={handleInputChange}
+                      />
+                      <QuestionInput
+                        question="In which port the backend will be running?"
+                        name="backend_port"
+                        type="number"
+                        placeholder="Enter backend port"
+                        onChange={handleInputChange}
+                        />
                       {/* <QuestionCheckbox
                         question="Do you require auto-scaling for your application?"
                         name="scale"
@@ -162,6 +183,13 @@ const QuestionnaireForm = () => {
                         question="Database password:"
                         name="database_password"
                         type="password"
+                        placeholder=""
+                        onChange={handleInputChange}
+                        />
+                      <QuestionInput
+                        question="MySQL version:"
+                        name="database_version"
+                        type="number"
                         placeholder=""
                         onChange={handleInputChange}
                         />

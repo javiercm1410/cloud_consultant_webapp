@@ -1,15 +1,34 @@
 import React from 'react';
 import styles from './Deploy.module.css';
+import ServicesCard from './ServicesCard';
+import { useLocation } from 'react-router-dom';
+import { FormDataContext } from '../../context/formDataContext';
 
 const DeployInfo = () => {
+    // const {formData} = useContext(FormDataContext);
+
+    const location = useLocation();
+    // const data = location.state?.data || location.state?.formData;
+    const apiResponse = location.state?.apiResponse || location.state?.Jresp;
+    const data = apiResponse?.data
+
     return(
         <div className='bg-main vh-100 d-flex flex-column align-items-center'>
             <h2 className={`${styles.cloudHeader} `}>Choose a cloud provider</h2>
-            <div className={`card ${styles.card}`} style={{ height: '150px', marginTop: "2rem", marginBottom: "2rem", width: "50%" }}>   
-                <div className={`card-body bg-dark ${styles.cardBody}`}> {/* Add bg-dark class here */}
-                    <p className={`${styles.cloudPrice} card-text`}>como asi</p>
+            <div className='row' style={{ width: "80%", marginBottom: "2rem" }}>
+                <div className="col-md-6">
+                    <ServicesCard data={data}/>
+                </div>
+                <div className="col-md-6">
+                    <div className={`card ${styles.card}`} style={{ height: '550px', marginBottom: "2rem" }}>   
+                        <div className="card-header">Endpoints</div>
+                        <div className={`card-body bg-dark ${styles.cardBody}`}>
+                            <p className={`${styles.cloudPrice} card-text`}>como asi</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     );
 };
