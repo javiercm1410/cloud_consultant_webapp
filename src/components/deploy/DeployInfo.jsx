@@ -10,7 +10,8 @@ const DeployInfo = () => {
     const location = useLocation();
     // const data = location.state?.data || location.state?.formData;
     const apiResponse = location.state?.apiResponse || location.state?.Jresp;
-    const data = apiResponse?.data
+    const deploy = location.state?.deployResponse;
+    const data = apiResponse?.data;
 
     return(
         <div className='bg-main vh-100 d-flex flex-column align-items-center'>
@@ -23,7 +24,10 @@ const DeployInfo = () => {
                     <div className={`card ${styles.card}`} style={{ height: '550px', marginBottom: "2rem" }}>   
                         <div className="card-header">Endpoints</div>
                         <div className={`card-body bg-dark ${styles.cardBody}`}>
-                            <p className={`${styles.cloudPrice} card-text`}>como asi</p>
+                            <div>
+                                <p>{JSON.stringify(deploy, null, 2)}</p>
+                            </div>
+                            {/* <p className={`${styles.cloudPrice} card-text`}>como asi</p> */}
                         </div>
                     </div>
                 </div>

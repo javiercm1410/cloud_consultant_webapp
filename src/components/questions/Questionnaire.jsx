@@ -121,6 +121,16 @@ const QuestionnaireForm = () => {
                         placeholder="Enter container port"
                         onChange={handleInputChange}
                         />
+                      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <Tooltip content="env1,env2,env3,env4" />
+                      </div>
+                        <QuestionInput
+                        question="Add env names to connect to the DB if needed?"
+                        name="env_database"
+                        type="text"
+                        placeholder="Enter environments name"
+                        onChange={handleInputChange}
+                        />
                     </>
                   ) : (
                     <>
@@ -189,7 +199,7 @@ const QuestionnaireForm = () => {
                       <QuestionInput
                         question="MySQL version:"
                         name="database_version"
-                        type="number"
+                        type="text"
                         placeholder=""
                         onChange={handleInputChange}
                         />

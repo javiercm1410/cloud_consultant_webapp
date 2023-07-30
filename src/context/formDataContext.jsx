@@ -24,7 +24,8 @@ export const FormDataProvider = ({ children }) => {
     access_key: '',
     backend_port: '',
     container_port: 0,
-    database_version: 0,
+    database_version: '',
+    env_database: '',
     // language_framework: '',
     // build_tools: '',
     // environment_config_details: ''

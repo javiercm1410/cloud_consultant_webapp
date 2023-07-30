@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Navar from '../utils/Navar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FormDataContext } from '../../context/formDataContext';
@@ -7,6 +7,8 @@ import PriceCard from './PriceCard';
 import CredentialsCard from './CredentialsCard';
 import styles from './Response.module.css';
 import Tooltip from "../utils/ToolTip";
+import axios from 'axios';
+import LoadingWheel from '../loading/LoadingWheel';
 // import ServicesCard from './ServicesCard';
 
 
@@ -20,7 +22,7 @@ const Response = () => {
   const apiResponse = location.state?.apiResponse || location.state?.Jresp;
   const base64Image = apiResponse?.imageBase64;
   const data = apiResponse?.data || {};
-  
+  const [isSubmitting, setIsSubmitting] = useState(false);
   console.log(apiResponse);
   // console.log(imagePath);
 
@@ -31,34 +33,27 @@ const Response = () => {
 
   const handleDeploy = async (event) => {
     // Implement your deploy logic here
-    navigate('/deploy', { state: { apiResponse, formData } });
-
-    // event.preventDefault();
-    // setIsSubmitting(true); // Set submitting state to true when form is submitted
+    // navigate('/deploy', { state: { apiResponse, formData } });
+    event.preventDefault();
+    setIsSubmitting(true); // Set submitting state to true when form is submitted
   
-    // try {
-    //   const response = await axios.post('http://localhost:3000/api/data', formData);
+    try {
+      const response = await axios.post('http://localhost:3000/api/deploy', formData);
 
-    //   if (response.status == 200){
-    //     const Jresp = response.data;
-    //     console.log('Form submitted successfully', formData, Jresp);
-    //     if (formData.cloud_provider === "No") {
-    //       // Redirect to the cloudchoice page and pass the response data
-    //       navigate('/cloudchoice', { state: { Jresp, formData } });
-    //     } else {
-    //       // Redirect to the response page and pass the response data
-    //       navigate('/response', { state: { Jresp, formData } });
-    //     }
+      if (response.status == 200){
+        const deployResponse = response.data;
+        // console.log('Form submitted successfully', formData, deployResponse);
+        navigate('/deploy', { state: { apiResponse, deployResponse } });
+        // navigate('/deploy', { state: { apiResponse, formData } });
 
-    //   } else {
-    //     throw new Error('Failed to submit form');
-    //   }
-    // } catch (error) {
-    //   console.error('Error submitting form:', error);
-    // } finally {
-    //   setIsSubmitting(false); // Set submitting state to false after form is processed
-    // }
-  
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
+      setIsSubmitting(false); // Set submitting state to false after form is processed
+    }
   };
 
   return (
@@ -90,12 +85,21 @@ const Response = () => {
           </div>
         </div>
 
-        <button className={`${styles.customButton} btn mr-5`} onClick={handleDeploy}>
-          Deploy
-        </button>
-        <button className={`${styles.customButton} btn`} style={{  marginLeft: "1rem", marginTop: "2rem", marginBottom: "2rem" }} onClick={handleGoBack}>
-          Go Back
-        </button>
+        {isSubmitting ? (  // Add this block
+                      <LoadingWheel />
+                    ) : (
+                      // <div className="mb-3 d-flex justify-content-center p-bt">
+                      <>
+                      <div> 
+                       <button className={`${styles.customButton} btn mr-5`} onClick={handleDeploy}>
+                          Deploy
+                        </button>
+                      <button className={`${styles.customButton} btn`} style={{  marginLeft: "1rem", marginTop: "2rem", marginBottom: "2rem" }} onClick={handleGoBack}>
+                        Go Back
+                      </button>
+                      </div>
+                      </>
+                    )}
 
       </div>
     </div>
