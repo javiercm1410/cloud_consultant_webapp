@@ -135,7 +135,7 @@ const QuestionnaireForm = () => {
                   ) : (
                     <>
                       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <Tooltip content="command 1<br />command 2<br />command 3" />
+                        <Tooltip content="Linux distro uses software package manager YUM<br />Commands must be separated by line:<br />command 1<br />command 2" />
                       </div>
                       <QuestionTextarea
                         question="How do you deploy your frontend app (including the git repo)?"
@@ -177,7 +177,7 @@ const QuestionnaireForm = () => {
                   <QuestionSelect
                     question="Is a managed database service necessary? If so, which type?"
                     name="managed_database"
-                    options={['MySQL', 'MongoDB', 'No']}
+                    options={['MySQL', 'MongoDB']}
                     onChange={handleInputChange}
                   />
                   {needDB ? (

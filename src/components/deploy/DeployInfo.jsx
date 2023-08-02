@@ -17,7 +17,7 @@ const DeployInfo = () => {
     if (formData.cloud_provider === 'AWS' && formData.architecture === 'Classic-three-tier') {
         imageSrc = '../../public/3TierArch.png'; // Specific image for AWS and exampleArchitecture
     } else if (formData.cloud_provider === 'GCP' && formData.architecture === 'Container-based') {
-        imageSrc = '../../public/google-cloud-logo.png';
+        imageSrc = '../../public/ContainerBased.png';
     }
 
     return(
