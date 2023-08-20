@@ -183,7 +183,7 @@ const QuestionnaireForm = () => {
                   {needDB ? (
                     <>
                       <QuestionInput
-                        question="Database name:"
+                        question="Database username:"
                         name="database_name"
                         type="text"
                         placeholder=""
