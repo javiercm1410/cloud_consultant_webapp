@@ -8,7 +8,7 @@
     "requireBranch": "main",
     "tagMatch": "v[0-9]*[0-9]*[0-9]*[0-9]*[0-9]*[0-9]*[0-9]*[0-9]*\\-[0-9]*[0-9]*",
     "tagName": "v${version}",
-    "getLatestTagFromAllRefs": true,
+    "getLatestTagFromAllRefs": false,
     "tagExclude": "*[-]*",
     "push": false,
     "requireCommits": true,
