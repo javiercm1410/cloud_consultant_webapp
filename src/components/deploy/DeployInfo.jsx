@@ -22,7 +22,7 @@ const DeployInfo = () => {
 
     return(
         <div className='bg-main d-flex flex-column align-items-center'>
-            <h2 className={`${styles.cloudHeader} `}>Results</h2>
+            <h2 className={`${styles.cloudHeader} `}>Result</h2>
             <div className='row' style={{ width: "80%", marginBottom: "2rem" }}>
                 <div className="col-md-6">
                     <ServicesCard data={data}/>
