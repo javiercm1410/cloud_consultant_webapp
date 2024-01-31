@@ -144,7 +144,7 @@ const QuestionnaireForm = () => {
                         onChange={handleInputChange}
                       />
                       <QuestionTextarea
-                        question="How do you deploy your backend app (including the git repo)?"
+                        question="How do you deploy your backend app (git repo)?"
                         name="deploy_command_back"
                         placeholder="Backend deploy commands"
                         onChange={handleInputChange}
