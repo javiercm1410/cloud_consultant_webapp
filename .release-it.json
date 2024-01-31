@@ -6,7 +6,7 @@
   "git": {
     "commitMessage": "chore: release v${version}",
     "requireBranch": "main",
-    "tagMatch": "v[0-9]*\\.[0-9]*\\.[0-9]*",
+    "tagMatch": "v[0-9]*[0-9]*[0-9]*[0-9]*[0-9]*[0-9]*[0-9]*[0-9]*\\-[0-9]*[0-9]*",
     "tagName": "v${version}",
     "getLatestTagFromAllRefs": true,
     "tagExclude": "*[-]*",
