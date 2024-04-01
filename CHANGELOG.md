@@ -1,5 +1,12 @@
 
 
+## [0.3.0](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.2.0...v0.3.0) (2024-04-01)
+
+
+### Features
+
+* Update deployment wf ([6a7b6cf](https://github.com/Jamaca1410/cloud_consultant_webapp/commit/6a7b6cf705eb520272bc6cc50ce84672f47efe27))
+
 ## [0.2.0](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.1.1...v0.2.0) (2024-04-01)
 
 
