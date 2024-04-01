@@ -1,5 +1,12 @@
 
 
+## [0.1.1](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.1.0...v0.1.1) (2024-04-01)
+
+
+### Bug Fixes
+
+* Update gitignore ([a1fd57e](https://github.com/Jamaca1410/cloud_consultant_webapp/commit/a1fd57ede0dede6e640ad00edfa8b05c171941a9))
+
 ## 0.1.0 (2024-04-01)
 
 
