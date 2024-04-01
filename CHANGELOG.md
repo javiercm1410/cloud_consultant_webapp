@@ -1,5 +1,12 @@
 
 
+## [0.2.0](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.1.1...v0.2.0) (2024-04-01)
+
+
+### Features
+
+* Important change ([04132c1](https://github.com/Jamaca1410/cloud_consultant_webapp/commit/04132c12a3bd273672d18fab68c65c2c942648b7))
+
 ## [0.1.1](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.1.0...v0.1.1) (2024-04-01)
 
 
