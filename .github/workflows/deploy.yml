@@ -24,6 +24,6 @@ jobs:
         id: env
 
       - name: 📝 Check tag
-        uses: gbh-tech/check-semantic-release-action@v0.1.0
+        uses: gbh-tech/check-semantic-release-action@v0.1.1
 
       - run: echo '${{ steps.env.outputs.environment }}'
