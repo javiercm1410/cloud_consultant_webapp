@@ -1,5 +1,12 @@
 
 
+## [0.3.1](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.3.0...v0.3.1) (2024-04-02)
+
+
+### Bug Fixes
+
+* Update action ([425cf76](https://github.com/Jamaca1410/cloud_consultant_webapp/commit/425cf768368e05bf3e47aad3f52fb8f664b5cacc))
+
 ## [0.3.0](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.2.0...v0.3.0) (2024-04-01)
 
 
