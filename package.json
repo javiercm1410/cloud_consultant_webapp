@@ -1,7 +1,7 @@
 {
   "name": "webclient",
   "private": true,
-  "version": "0.3.2-uat.5",
+  "version": "0.3.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
