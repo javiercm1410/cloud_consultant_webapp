@@ -6,8 +6,8 @@ on:
       environment:
         type: choice
         options:
-          - "uat"
-          - "production"
+          - 'uat'
+          - 'production'
 
 jobs:
   release:
@@ -22,11 +22,18 @@ jobs:
         run: |
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
       - name: 📦 Install package dependencies using lockfile
         run: npm ci
 
-      - name: 🚀 Run new version
+      - name: 🚀 Run new version for production
+        if: contains(inputs.environment, 'production')
         run: npx release-it --ci
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DEMS_TOKEN }}
+
+      - name: 🚀 Run new version for uat
+        if: contains(inputs.environment, 'uat')
+        run: npx release-it --ci --preRelease=uat
+        env:
+          GITHUB_TOKEN: ${{ secrets.DEMS_TOKEN }}
+      
