@@ -1,7 +1,8 @@
 {
   "github": {
     "release": true,
-    "releaseName": "v${version}"
+    "releaseName": "v${version}",
+    "preRelease": false
   },
   "git": {
     "commitMessage": "chore: release v${version}",
