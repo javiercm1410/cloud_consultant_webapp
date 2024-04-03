@@ -1,5 +1,12 @@
 
 
+## [0.3.2-uat.2](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.3.2-uat.1...v0.3.2-uat.2) (2024-04-03)
+
+
+### Bug Fixes
+
+* Add trigger on prerelease ([0205eeb](https://github.com/Jamaca1410/cloud_consultant_webapp/commit/0205eeb1d9210415579aeac80999e8101f604ce4))
+
 ## [0.3.2-uat.1](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.3.2-uat.0...v0.3.2-uat.1) (2024-04-03)
 
 
