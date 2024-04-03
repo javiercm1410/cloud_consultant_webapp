@@ -29,11 +29,11 @@ jobs:
         if: contains(inputs.environment, 'production')
         run: npx release-it --ci
         env:
-          GITHUB_TOKEN: ${{ secrets.DEMS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       - name: 🚀 Run new version for uat
         if: contains(inputs.environment, 'uat')
         run: npx release-it --ci --preRelease=uat
         env:
-          GITHUB_TOKEN: ${{ secrets.DEMS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       
