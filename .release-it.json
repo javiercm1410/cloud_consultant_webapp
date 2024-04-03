@@ -16,6 +16,9 @@
     "pushArgs": ["--no-verify", "--follow-tags"],
     "commitArgs": ["--no-verify"]
   },
+  "npm": {
+    "publish": true
+  },
   "plugins": {
     "@release-it/conventional-changelog": {
       "preset": {
