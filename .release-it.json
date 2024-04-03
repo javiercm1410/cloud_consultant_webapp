@@ -1,6 +1,5 @@
 {
   "github": {
-    "release": true,
     "releaseName": "v${version}",
     "preRelease": true
   },
