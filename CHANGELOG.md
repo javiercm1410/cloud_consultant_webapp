@@ -1,5 +1,12 @@
 
 
+## [0.3.2-uat.3](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.3.2-uat.2...v0.3.2-uat.3) (2024-04-03)
+
+
+### Bug Fixes
+
+* Update release it config ([43f8fbc](https://github.com/Jamaca1410/cloud_consultant_webapp/commit/43f8fbccd8ce5e86a1e7fd5fc4844dcb22978809))
+
 ## [0.3.2-uat.2](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.3.2-uat.1...v0.3.2-uat.2) (2024-04-03)
 
 
