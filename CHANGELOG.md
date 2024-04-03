@@ -1,5 +1,7 @@
 
 
+## [0.3.3-uat.1](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.3.3-uat.0...v0.3.3-uat.1) (2024-04-03)
+
 ## [0.3.3-uat.0](https://github.com/Jamaca1410/cloud_consultant_webapp/compare/v0.3.2...v0.3.3-uat.0) (2024-04-03)
 
 
