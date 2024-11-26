@@ -25,6 +25,6 @@ jobs:
 
       - name: 📝 Check tag
         if: startsWith(github.ref_name, 'v')
-        uses: gbh-tech/check-semantic-release-action@v0.1.1
+        uses: gbh-tech/check-semantic-release-action@v0.1.2
 
       - run: echo '${{ steps.env.outputs.environment }}'
