@@ -1,0 +1,46 @@
+name: 🚀 Release test
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        type: string
+        required: true
+      commit_sha:
+        description: 'Commit SHA to tag (defaults to latest commit)'
+        required: false
+        default: ''
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.head_ref || github.ref }}'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 💻 Checkout current pull-request revision code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 💼 Configure Git user
+        run: |
+          git config user.name "devops-accounterprise"
+          git config user.email "devops@accounterprise.com"
+
+      - name: 🏷️ Create and push tag
+        run: |
+          COMMIT_SHA=${{ inputs.commit_sha }}
+          if [ -z "$COMMIT_SHA" ]; then
+            COMMIT_SHA=$(git rev-parse HEAD)
+          fi
+          
+          git tag -a ${{ inputs.tag_name }} $COMMIT_SHA
+          git push origin ${{ inputs.tag_name }}
+
+      - name: 🚀 Create Release
+        env:
+          GITHUB_TOKEN: 
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create ${{ inputs.tag_name }} --title "${{ inputs.tag_name }}"
