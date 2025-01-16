@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: 📝 Set environment variable
-        uses: gbh-tech/set-environment-action@v0.1.1
+        uses: gbh-tech/set-environment-action@v0.1.2
         id: env
 
       - name: 📝 Check tag
