@@ -1,4 +1,4 @@
-name: 🚀 Release test
+name: 🚀 Release
 
 on:
   workflow_dispatch:
@@ -9,6 +9,10 @@ on:
       commit_sha:
         description: 'Commit SHA to tag (defaults to latest commit)'
         required: false
+        default: ''
+      tag_message:
+        description: 'Message for tag'
+        required: true
         default: ''
 
 concurrency:
@@ -22,7 +26,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 💼 Configure Git user
         run: |
@@ -36,11 +39,11 @@ jobs:
             COMMIT_SHA=$(git rev-parse HEAD)
           fi
           
-          git tag -a ${{ inputs.tag_name }} $COMMIT_SHA
+          git tag -a ${{ inputs.tag_name }} $COMMIT_SHA -m ${{ inputs.tag_message }}
           git push origin ${{ inputs.tag_name }}
 
       - name: 🚀 Create Release
         env:
-          GITHUB_TOKEN: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh release create ${{ inputs.tag_name }} --title "${{ inputs.tag_name }}"
