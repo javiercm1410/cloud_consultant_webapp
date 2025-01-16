@@ -39,7 +39,7 @@ jobs:
             COMMIT_SHA=$(git rev-parse HEAD)
           fi
           
-          git tag -a ${{ inputs.tag_name }} $COMMIT_SHA -m ${{ inputs.tag_message }}
+          git tag -a ${{ inputs.tag_name }} -m ${{ inputs.tag_message }} $COMMIT_SHA
           git push origin ${{ inputs.tag_name }}
 
       - name: 🚀 Create Release
